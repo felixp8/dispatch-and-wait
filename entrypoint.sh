@@ -31,7 +31,7 @@ function find_workflow {
     
     if [[ "$tdif" -gt "10" ]]
     then
-      if [[ "$counter" -gt "3" ]]
+      if [[ "$counter" -gt "30" ]]
       then
         echo "Workflow not found"
         exit 1
