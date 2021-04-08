@@ -25,6 +25,10 @@ inputs:
     description: 'Maximum amount of time to wait for workflow'
     default: "60"
     required: false
+  max_startup_time:
+    description: 'Maximum amount of time in seconds to wait for workflow startup'
+    default: "10"
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

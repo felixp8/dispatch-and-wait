@@ -20,7 +20,7 @@ function find_workflow {
   counter=0
   while [[ true ]]
   do
-    counter=$(( $counter + 1 ))
+    counter=$(( $counter + 2 ))
     workflow=$(curl -s "https://api.github.com/repos/${INPUT_OWNER}/${INPUT_REPO}/actions/runs?event=repository_dispatch" \
       -H "Accept: application/vnd.github.v3+json" \
       -H "Authorization: Bearer ${INPUT_TOKEN}" | jq '.workflow_runs[0]')
@@ -31,7 +31,7 @@ function find_workflow {
     
     if [[ "$tdif" -gt "10" ]]
     then
-      if [[ "$counter" -gt "3" ]]
+      if [[ "$counter" -gt "$INPUT_MAX_STARTUP_TIME" ]]
       then
         echo "Workflow not found"
         exit 1
